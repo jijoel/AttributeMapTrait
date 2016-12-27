@@ -23,7 +23,9 @@ trait AttributeMapTrait
             if (is_string($item))
                 return $this->$item;
 
-            return $this->{$item[0]} ?: $item[1];
+            return (! is_null($this->{$item[0]}))
+                ? $this->{$item[0]}
+                : $item[1];
         }
 
         // If all else fails, ask our parent for help

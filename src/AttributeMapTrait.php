@@ -38,8 +38,8 @@ trait AttributeMapTrait
                 if ($mapValue == $key)
                     return parent::setAttribute($mapKey, $value);
 
-            if ($mapValue[0] == $key)
-                return parent::setAttribute($mapKey, $value);
+            if ($mapKey == $key)
+                return parent::setAttribute($mapValue[0], $value);
         }
 
         return parent::setAttribute($key, $value);

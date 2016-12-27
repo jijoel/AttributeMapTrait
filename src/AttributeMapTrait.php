@@ -3,6 +3,12 @@
 
 trait AttributeMapTrait
 {
+    // Map of attributes to reassign:
+    // protected $attributeMap = [
+    //     Use attributes in one of these formats:
+    //     'new_name' => 'old_name',
+    //     'new_name' => ['old_name','default_value'],
+    // ];
 
     public function getAttribute($key)
     {
@@ -11,8 +17,8 @@ trait AttributeMapTrait
             return $this->{$this->primaryKey};
 
         // return the contents of an attribute map
-        if ( isset($this->attributeMap[$key]) ) {
-            $item = $this->attributeMap[$key];
+        if ( isset($this->getAttributeMap()[$key]) ) {
+            $item = $this->getAttributeMap()[$key];
             
             if (is_string($item))
                 return $this->$item;
@@ -33,7 +39,7 @@ trait AttributeMapTrait
         if ($key == 'id')
             return parent::setAttribute($this->primaryKey, $value);
 
-        foreach($this->attributeMap as $mapKey=>$mapValue) {
+        foreach($this->getAttributeMap() as $mapKey=>$mapValue) {
             if (is_string($mapValue))
                 if ($mapValue == $key)
                     return parent::setAttribute($mapKey, $value);
@@ -43,6 +49,14 @@ trait AttributeMapTrait
         }
 
         return parent::setAttribute($key, $value);
+    }
+
+    private function getAttributeMap()
+    {
+        if (isset($this->attributeMap))
+            return $this->attributeMap;
+
+        return [];
     }
 
 }

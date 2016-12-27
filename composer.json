@@ -1,0 +1,25 @@
+{
+    "name": "jijoel/attribute-map-trait",
+    "description": "Laravel 5 package to conveniently use alternate names of attributes",
+    "authors": [
+        {
+            "name": "Joel Hatch",
+            "email": "jijoel@yahoo.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Jijoel\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "secure-http": true
+    }
+}

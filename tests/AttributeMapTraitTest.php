@@ -16,7 +16,7 @@ class AttributeMapTraitTest extends PHPUnit_Framework_TestCase
     public function can_get_alternate_key_field_as_id()
     {
         $this->mock->primaryKey = 'foo';
-        $this->mock->foo = 132;
+        $this->mock->attributes = ['foo' => 132];
 
         $this->assertSame(132, $this->mock->getAttribute('id'));
     }

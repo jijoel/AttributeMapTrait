@@ -14,7 +14,7 @@ trait AttributeMapTrait
     {
         // return the given primary key if asked for id
         if ($key == 'id')
-            return $this->{$this->primaryKey};
+            return $this->attributes[$this->primaryKey];
 
         // return the contents of an attribute map
         if ( isset($this->getAttributeMap()[$key]) ) {
